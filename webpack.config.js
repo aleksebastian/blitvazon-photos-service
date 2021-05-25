@@ -1,5 +1,6 @@
 module.exports = {
   entry: `${__dirname}/client/src/App.jsx`,
+  devtool: 'source-map',
   module: {
     rules: [
       {
