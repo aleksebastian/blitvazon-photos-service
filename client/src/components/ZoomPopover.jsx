@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const ZoomPopoverWrapper = styled.div`
-  width: 27%;
+  width: 27vw;
   height: 45em;
   margin-left: 0.7em;
   border: 1px solid black;
@@ -19,8 +19,13 @@ const ZoomPopoverWrapper = styled.div`
 
 const ZoomPopover = (props) => (
   <ZoomPopoverWrapper
-    style={{backgroundImage: `url(${props.primaryPhotoUrl})`, backgroundPosition: `${(-props.coordinates.x * 2)}px ${(-props.coordinates.y * 1.5)}px`}}>
-  </ZoomPopoverWrapper>
+    style={{
+      backgroundImage: `url(${props.primaryPhotoUrl})`,
+      backgroundPosition: `${-props.coordinates.x * 2}px ${
+        -props.coordinates.y * 1.5
+      }px`,
+    }}
+  ></ZoomPopoverWrapper>
 );
 
 export default ZoomPopover;
