@@ -1,8 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const ThumbnailWrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  @media (max-width: 600px) {
+    flex-direction: row;
+    justify-content: center;
+  }
 `;
 
 const Thumbnail = styled.img`
@@ -13,27 +18,37 @@ const Thumbnail = styled.img`
   &:hover {
     cursor: pointer;
   }
+  @media (max-width: 600px) {
+    margin: 0px 10px 10px 0px;
+  }
 `;
 
 const selectedThumbnailStyle = {
   border: "1px solid #e77600",
-  boxShadow: "0 0 3px 2px rgb(228 121 17 / 50%)"
+  boxShadow: "0 0 3px 2px rgb(228 121 17 / 50%)",
 };
 
 const notSelectedThumbnailStyle = {
   border: "1px solid rgba(0, 0, 0, .4)",
-  boxShadow: "none"
+  boxShadow: "none",
 };
 
 const Thumbnails = (props) => (
-  <ThumbnailWrapper style={{flexDirection: props.flexDirection}}>
+  <ThumbnailWrapper>
     {props.photos.map((photo, i) => (
       <Thumbnail
-      style = { props.primaryPhotoUrl === photo ? selectedThumbnailStyle : notSelectedThumbnailStyle }
-      id={i} onMouseEnter={(e) => props.setPrimary(e)} src={photo} key={i}>
-      </Thumbnail>
+        style={
+          props.primaryPhotoUrl === photo
+            ? selectedThumbnailStyle
+            : notSelectedThumbnailStyle
+        }
+        id={i}
+        onMouseEnter={(e) => props.setPrimary(e)}
+        src={photo}
+        key={i}
+      ></Thumbnail>
     ))}
-    </ThumbnailWrapper>
+  </ThumbnailWrapper>
 );
 
 export default Thumbnails;

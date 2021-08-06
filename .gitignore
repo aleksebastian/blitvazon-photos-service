@@ -30,8 +30,4 @@ config/cloudinary.js
 
 deploy.sh
 
-# public/photos_bundle.js
-# public/photos_bundle.js.gz
-# public/photos_bundle.js.map
-
-photos_bundle.js*
+photos_bundle*
