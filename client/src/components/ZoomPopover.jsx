@@ -15,6 +15,9 @@ const ZoomPopoverWrapper = styled.div`
     width: 40%;
     height: 40em;
   }
+  @media screen and (max-width: 1100px) {
+    display: none;
+  }
 `;
 
 const ZoomPopover = (props) => (
