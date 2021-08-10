@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 import request from "./request.js";
 import Thumbnails from "./components/Photos.jsx";
-import ZoomPopover from "./components/ZoomPopover.jsx";
-import PhotosModal from "./components/PhotosModal.jsx";
+const ZoomPopover = React.lazy(() => import("./components/ZoomPopover.jsx"));
+const PhotosModal = React.lazy(() => import("./components/PhotosModal.jsx"));
 
 const AppWrapper = styled.div`
   margin: 0;
@@ -116,10 +116,12 @@ class Photos extends React.Component {
     let popover;
     if (isHovering) {
       popover = (
-        <ZoomPopover
-          primaryPhotoUrl={this.state.primaryPhotoUrl}
-          coordinates={this.state.zoomModalCoordinates}
-        ></ZoomPopover>
+        <Suspense fallback={<div></div>}>
+          <ZoomPopover
+            primaryPhotoUrl={this.state.primaryPhotoUrl}
+            coordinates={this.state.zoomModalCoordinates}
+          ></ZoomPopover>
+        </Suspense>
       );
     } else {
       popover = null;
@@ -129,14 +131,16 @@ class Photos extends React.Component {
     let modal;
     if (modalState) {
       modal = (
-        <PhotosModal
-          productId={this.state.productId}
-          primaryPhotoUrl={this.state.primaryPhotoUrl}
-          productInfo={this.state.productInfo}
-          setPrimary={this.setPrimary}
-          photos={this.state.productPhotosUrls}
-          toggleModal={this.toggleModal}
-        />
+        <Suspense fallback={<div></div>}>
+          <PhotosModal
+            productId={this.state.productId}
+            primaryPhotoUrl={this.state.primaryPhotoUrl}
+            productInfo={this.state.productInfo}
+            setPrimary={this.setPrimary}
+            photos={this.state.productPhotosUrls}
+            toggleModal={this.toggleModal}
+          />
+        </Suspense>
       );
     } else {
       modal = null;
