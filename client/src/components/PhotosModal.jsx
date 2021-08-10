@@ -7,18 +7,13 @@ const PhotosModalWrapper = styled.div`
   border-color: #d5d9d9;
   box-shadow: 0 0 14px 0 rgba(15, 17, 17, 0.5);
   background: white;
-  width: 73%;
-  height: auto;
+  width: 85vw;
+  height: 90vh;
   z-index: 1000;
   border-radius: 8px;
 
   @media screen and (max-width: 1100px) {
     display: none;
-  }
-
-  @media (max-width: 1400px) {
-    width: 98.5%;
-    height: 95%;
   }
 
   -webkit-animation: fadein 0.5s;
@@ -62,7 +57,6 @@ const PhotosModalEl = styled.div`
 `;
 
 const PrimaryPhotoWrapper = styled.div`
-  margin-bottom: 2.5em;
   height: auto;
 `;
 
@@ -70,12 +64,13 @@ const PrimaryPhoto = styled.img`
   max-width: 100%;
   height: auto;
   @media (max-width: 1400px) {
-    max-width: 90%;
+    max-width: 83%;
   } ;
 `;
 
 const ProductInfoWrapper = styled.div`
-  padding-top: 5%;
+  padding-top: 2%;
+  flex-basis: 30%;
   align-self: flex-start;
 `;
 const ProductInfo = styled.div``;

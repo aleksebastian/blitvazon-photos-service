@@ -6,23 +6,32 @@ import Thumbnails from "./components/Photos.jsx";
 import ZoomPopover from "./components/ZoomPopover.jsx";
 import PhotosModal from "./components/PhotosModal.jsx";
 
+const AppWrapper = styled.div`
+  margin: 0;
+  padding: 0;
+  border: 0;
+`;
+
 const PhotosWrapper = styled.div`
   display: flex;
-  /* flex-direction: column-reverse; */
-  margin-right: -9.3em;
-  @media (max-width: 600px) {
+  width: 26vw;
+  min-width: 437px;
+  @media (max-width: 1100px) {
     flex-direction: column-reverse;
-    width: 90vw;
+    width: 80vw;
+    max-width: 500px;
   }
 `;
 
 const PrimaryPhotoWrapper = styled.div`
-  flex-basis: 65%;
-  min-width: 278px;
+  @media (max-width: 1100px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const PrimaryPhoto = styled.img`
-  max-width: 65%
+  max-width: 100%;
   height: auto;
   &:hover {
     cursor: pointer;
@@ -134,7 +143,7 @@ class Photos extends React.Component {
     }
 
     return (
-      <div>
+      <AppWrapper>
         {modal}
         <PhotosWrapper>
           <Thumbnails
@@ -148,13 +157,13 @@ class Photos extends React.Component {
               onMouseLeave={() => this.toggleZoom()}
               onClick={() => this.toggleModal()}
               onMouseMove={(e) => this.setCoordinates(e)}
-              style={{ maxWidth: "100%", height: "auto" }}
+              // style={{ maxWidth: "100%", height: "auto" }}
               src={this.state.primaryPhotoUrl}
             ></PrimaryPhoto>
             {popover}
           </PrimaryPhotoWrapper>
         </PhotosWrapper>
-      </div>
+      </AppWrapper>
     );
   }
 }

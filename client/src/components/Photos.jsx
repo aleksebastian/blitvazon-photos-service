@@ -4,7 +4,7 @@ import styled from "styled-components";
 const ThumbnailWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  @media (max-width: 600px) {
+  @media (max-width: 1100px) {
     flex-direction: row;
     justify-content: center;
   }
@@ -13,13 +13,13 @@ const ThumbnailWrapper = styled.div`
 const Thumbnail = styled.img`
   width: 40px;
   height: auto;
-  margin: 0px 20px 10px 0px;
+  margin: 0 20px 10px 0;
   border-radius: 2px;
   &:hover {
     cursor: pointer;
   }
-  @media (max-width: 600px) {
-    margin: 0px 10px 10px 0px;
+  @media (max-width: 1100px) {
+    margin: 10px 10px 0 0;
   }
 `;
 
