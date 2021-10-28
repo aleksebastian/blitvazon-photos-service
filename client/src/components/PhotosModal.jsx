@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Thumbnails from "./Photos.jsx";
+import Thumbnails from "./Thumbnails.jsx";
 
 const PhotosModalWrapper = styled.div`
   position: absolute;
