@@ -46,6 +46,7 @@ const Thumbnails = (props) => (
         onMouseEnter={(e) => props.setPrimary(e)}
         src={photo}
         key={i}
+        alt="Product photo description goes here"
       ></Thumbnail>
     ))}
   </ThumbnailWrapper>
