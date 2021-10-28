@@ -45,7 +45,7 @@ const productInfo = async (productId) => {
     const response = await fetchWithTimeout(
       `http://ec2-18-217-85-161.us-east-2.compute.amazonaws.com:4004/description/${productId}`,
       {
-        timeout: 3000,
+        timeout: 1000,
       }
     );
     const productInfo = await response.json();
