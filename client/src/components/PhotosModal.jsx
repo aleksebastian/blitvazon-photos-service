@@ -9,7 +9,6 @@ const PhotosModalWrapper = styled.div`
   box-shadow: 0 0 14px 0 rgba(15, 17, 17, 0.5);
   background: white;
   width: 90vw;
-  height: 90vh;
   z-index: 1000;
   border-radius: 8px;
 
@@ -59,6 +58,7 @@ const PhotosModalEl = styled.div`
 
 const PrimaryPhotoWrapper = styled.div`
   height: auto;
+  margin-bottom: 2.5em;
 `;
 
 const PrimaryPhoto = styled.img`
