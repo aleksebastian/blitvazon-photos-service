@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 import request from "./request.js";
-import Thumbnails from "./components/Photos.jsx";
+import Thumbnails from "./components/Thumbnails.jsx";
 const ZoomPopover = React.lazy(() => import("./components/ZoomPopover.jsx"));
 const PhotosModal = React.lazy(() => import("./components/PhotosModal.jsx"));
 
@@ -149,24 +149,28 @@ class Photos extends React.Component {
     return (
       <AppWrapper>
         {modal}
-        <PhotosWrapper>
-          <Thumbnails
-            setPrimary={this.setPrimary}
-            primaryPhotoUrl={this.state.primaryPhotoUrl}
-            photos={this.state.productPhotosUrls}
-          />
-          <PrimaryPhotoWrapper>
-            <PrimaryPhoto
-              onMouseEnter={() => this.toggleZoom()}
-              onMouseLeave={() => this.toggleZoom()}
-              onClick={() => this.toggleModal()}
-              onMouseMove={(e) => this.setCoordinates(e)}
-              // style={{ maxWidth: "100%", height: "auto" }}
-              src={this.state.primaryPhotoUrl}
-            ></PrimaryPhoto>
-            {popover}
-          </PrimaryPhotoWrapper>
-        </PhotosWrapper>
+        {this.state.productId ? (
+          <PhotosWrapper>
+            <Thumbnails
+              setPrimary={this.setPrimary}
+              primaryPhotoUrl={this.state.primaryPhotoUrl}
+              photos={this.state.productPhotosUrls}
+            />
+            <PrimaryPhotoWrapper>
+              <PrimaryPhoto
+                onMouseEnter={() => this.toggleZoom()}
+                onMouseLeave={() => this.toggleZoom()}
+                onClick={() => this.toggleModal()}
+                onMouseMove={(e) => this.setCoordinates(e)}
+                src={this.state.primaryPhotoUrl}
+                alt="primary photo for short product description goes here"
+              ></PrimaryPhoto>
+              {popover}
+            </PrimaryPhotoWrapper>
+          </PhotosWrapper>
+        ) : (
+          <div></div>
+        )}
       </AppWrapper>
     );
   }
