@@ -4,10 +4,11 @@ import Thumbnails from "./Thumbnails.jsx";
 
 const PhotosModalWrapper = styled.div`
   position: absolute;
+  margin-left: 4.5vw;
   border-color: #d5d9d9;
   box-shadow: 0 0 14px 0 rgba(15, 17, 17, 0.5);
   background: white;
-  width: 85vw;
+  width: 90vw;
   height: 90vh;
   z-index: 1000;
   border-radius: 8px;
@@ -69,7 +70,7 @@ const PrimaryPhoto = styled.img`
 `;
 
 const ProductInfoWrapper = styled.div`
-  padding-top: 2%;
+  padding-top: 0.5em;
   flex-basis: 30%;
   align-self: flex-start;
 `;
@@ -79,7 +80,7 @@ const ProductTitle = styled.span`
   display: block;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 17px;
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
 `;
 
 const ProductColorAndConfiguration = styled.span`
@@ -87,7 +88,7 @@ const ProductColorAndConfiguration = styled.span`
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 12px;
   color: #767676;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 `;
 
 const X = styled.span`
@@ -96,6 +97,10 @@ const X = styled.span`
   margin-left: 97%;
   margin-top: 1.5em;
   cursor: pointer;
+`;
+
+const ThumbnailsWrapper = styled.div`
+  margin-top: 2em;
 `;
 
 const PhotosModal = (props) => {
@@ -117,11 +122,13 @@ const PhotosModal = (props) => {
               Configuration: {props.productInfo.configuration}
             </ProductColorAndConfiguration>
           </ProductInfo>
-          <Thumbnails
-            setPrimary={props.setPrimary}
-            primaryPhotoUrl={props.primaryPhotoUrl}
-            photos={props.photos}
-          />
+          <ThumbnailsWrapper>
+            <Thumbnails
+              setPrimary={props.setPrimary}
+              primaryPhotoUrl={props.primaryPhotoUrl}
+              photos={props.photos}
+            />
+          </ThumbnailsWrapper>
         </ProductInfoWrapper>
       </PhotosModalEl>
     </PhotosModalWrapper>
