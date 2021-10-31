@@ -14,21 +14,17 @@ const AppWrapper = styled.div`
 
 const PhotosWrapper = styled.div`
   display: flex;
-  width: 26vw;
+  gap: 20px;
   min-width: 437px;
   @media (max-width: 1100px) {
     flex-direction: column-reverse;
+    min-width: unset;
+    align-items: center;
     width: 80vw;
-    max-width: 500px;
   }
 `;
 
-const PrimaryPhotoWrapper = styled.div`
-  @media (max-width: 1100px) {
-    display: flex;
-    justify-content: center;
-  }
-`;
+const PrimaryPhotoWrapper = styled.div``;
 
 const PrimaryPhoto = styled.img`
   max-width: 100%;
