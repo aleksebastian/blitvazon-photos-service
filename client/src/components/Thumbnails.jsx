@@ -4,22 +4,18 @@ import styled from "styled-components";
 const ThumbnailWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 10px;
   @media (max-width: 1100px) {
     flex-direction: row;
-    justify-content: center;
   }
 `;
 
 const Thumbnail = styled.img`
   width: 40px;
   height: auto;
-  margin: 0 20px 10px 0;
   border-radius: 2px;
   &:hover {
     cursor: pointer;
-  }
-  @media (max-width: 1100px) {
-    margin: 10px 10px 0 0;
   }
 `;
 
