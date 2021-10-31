@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const ZoomPopoverWrapper = styled.div`
-  width: 27vw;
-  height: 45em;
   margin-left: 0.7em;
   border: 1px solid black;
   position: absolute;
