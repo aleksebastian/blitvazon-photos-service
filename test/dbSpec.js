@@ -1,61 +1,46 @@
-const { expect, assert } = require('chai');
-const mongoose = require('mongoose');
-const db = 'mongodb://localhost/photos';
-const database = require('../database/index.js');
-const dbSeed = require('../populate.js');
-const faker = require('faker');
+const { expect, assert } = require("chai");
+const Mongoose = require("mongoose");
+const Photo = require("../database/index.js");
+const populateDb = require("../database/seed/populate.js");
 
+const faker = require("faker");
 
-describe('Database', () => {
-
-  let primaryPhotoCount = 100;
-  let primaryPhotoUrls = [];
-
-  let productPhotoCount = 300;
-  let productPhotoUrls = [];
-
+describe("Database", () => {
   before(() => {
-    for (let i = 0; i < productPhotoCount; i++) {
-      if (i < primaryPhotoCount) {
-        primaryPhotoUrls.push(faker.image.imageUrl());
+    // Leaving for possible future use
+  });
+
+  describe("Database seeding", () => {
+    it("should seed the database with 100 records", async () => {
+      try {
+        let seed = await populateDb(Photo);
+        assert(
+          seed === "ok",
+          "populateDb function should return ok on successful insert"
+        );
+      } catch (e) {
+        console.error(e);
       }
-      productPhotoUrls.push(faker.image.imageUrl());
-    }
-  })
-
-  describe('Database seeding', () => {
-    it('should seed the database with 100 records', async () => {
-
-      await dbSeed.savePhotos(primaryPhotoUrls, productPhotoUrls);
-
-      await mongoose.connect(db, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false
-      });
-
-      let dbRecordsCount = await database.Photo.countDocuments()
-      assert(dbRecordsCount === 100, 'record count should be 100');
     });
   });
 
-  describe('Database re-seeding', () => {
-    it('should not duplicating records upon re-seeding', async () => {
-
-      await dbSeed.savePhotos(primaryPhotoUrls, productPhotoUrls);
-
-      await mongoose.connect(db, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false
-      });
-
-      let dbRecordsCount = await database.Photo.countDocuments()
-      assert(dbRecordsCount === 100, 'record count should still be 100');
+  describe("Database re-seeding", () => {
+    it("should not duplicate records when re-seeding", async () => {
+      try {
+        let seed = await populateDb(Photo);
+        let recordCount = await Photo.countDocuments();
+        assert(
+          recordCount === 100,
+          "record count should still be 100 after re-seeding."
+        );
+      } catch (e) {
+        console.error(e);
+      }
     });
   });
 
-  after(async () => {
-    await mongoose.connection.close();
+  after(() => {
+    // console.log("Closing Mongoose connection");
+    // Mongoose.connection.close();
   });
 });
