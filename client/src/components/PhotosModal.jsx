@@ -52,8 +52,7 @@ const PhotosModalWrapper = styled.div`
 
 const PhotosModalEl = styled.div`
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center;
 `;
 
 const PrimaryPhotoWrapper = styled.div`
