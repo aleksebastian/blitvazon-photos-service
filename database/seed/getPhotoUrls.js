@@ -7,6 +7,9 @@ cloudinary.config({
   api_secret: process.env.api_secret,
 });
 
+const currentFileExtension = ".jpg";
+const optimizedFileExtension = ".webp";
+
 const getPhotoUrls = (tag) => {
   let maxResults;
   let urls;
@@ -27,7 +30,9 @@ const getPhotoUrls = (tag) => {
           reject(err);
         } else {
           let photosInfo = result.resources;
-          urls = photosInfo.map((photoInfo) => photoInfo.url);
+          urls = photosInfo.map((photoInfo) =>
+            photoInfo.url.replace(currentFileExtension, optimizedFileExtension)
+          );
           resolve(urls);
         }
       }
