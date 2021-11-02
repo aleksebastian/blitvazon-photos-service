@@ -4,13 +4,16 @@ import Thumbnails from "./Thumbnails.jsx";
 
 const PhotosModalWrapper = styled.div`
   position: absolute;
-  margin-left: 4.5vw;
   border-color: #d5d9d9;
   box-shadow: 0 0 14px 0 rgba(15, 17, 17, 0.5);
   background: white;
-  width: 90vw;
   z-index: 1000;
   border-radius: 8px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw; /* Need a specific value to work */
 
   @media screen and (max-width: 1100px) {
     display: none;
@@ -52,12 +55,12 @@ const PhotosModalWrapper = styled.div`
 
 const PhotosModalEl = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  margin: 0 1em 2.5em 2.5em;
 `;
 
 const PrimaryPhotoWrapper = styled.div`
   height: auto;
-  margin-bottom: 2.5em;
 `;
 
 const PrimaryPhoto = styled.img`
