@@ -1,20 +1,28 @@
-const mongoose = require('mongoose');
-const db = 'mongodb://localhost/photos'
-mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false}, (err) => {
+const Mongoose = require("mongoose");
+// uncomment and replace first argument in line 11 to use in db in local
+const localDb = "mongodb://localhost/photos";
+const dockerDb = "mongodb://mongo:27017/photos";
+const mongooseOptions = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+};
+
+Mongoose.connect(dockerDb, mongooseOptions, (err) => {
   if (err) {
     console.error(err);
   } else {
-    console.log('Connected to mongodb');
+    console.log("Connected to mongodb");
   }
 });
 
-const photoSchema = mongoose.Schema({
+const PhotoSchema = Mongoose.Schema({
   id: Number,
   primaryUrl: String,
   productUrls: Array,
   featuresUrls: Array,
 });
 
-const Photo = mongoose.model('Photo', photoSchema);
+const Photo = Mongoose.model("Photo", PhotoSchema);
 
-module.exports.Photo = Photo;
+module.exports = Photo;
