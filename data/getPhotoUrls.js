@@ -1,35 +1,46 @@
-const cloudinary = require('cloudinary');
-require('dotenv').config();
+const cloudinary = require("cloudinary");
+require("dotenv").config();
 
 cloudinary.config({
   cloud_name: process.env.cloud_name,
   api_key: process.env.api_key,
-  api_secret: process.env.api_secret
+  api_secret: process.env.api_secret,
 });
+
+const currentFileExtension = ".jpg";
+const optimizedFileExtension = ".webp";
 
 const getPhotoUrls = (tag) => {
   let maxResults;
   let urls;
-  if (tag === 'primary') {
+  if (tag === "primary") {
     maxResults = 100;
-  } else if (tag === 'images') {
+  } else if (tag === "images") {
     maxResults = 300;
   } else {
-    throw 'Invalid tag parameter'
+    throw "Invalid tag parameter";
   }
 
   return new Promise((resolve, reject) => {
-    cloudinary.v2.api.resources_by_tag(tag, {max_results: maxResults}, (err, result) => {
-      if (err) {
-        reject(err)
-      } else {
-        let photosInfo = result.resources;
-        urls = photosInfo.map(photoInfo => photoInfo.url);
-        resolve(urls);
+    cloudinary.v2.api.resources_by_tag(
+      tag,
+      { max_results: maxResults },
+      (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          let photosInfo = result.resources;
+          urls = photosInfo.map((photoInfo) =>
+            photoInfo.url.replace(currentFileExtension, optimizedFileExtension)
+          );
+          console.log(urls);
+          resolve(urls);
+        }
       }
-    });
+    );
   });
 };
 
+getPhotoUrls("primary");
 
 module.exports.getPhotoUrls = getPhotoUrls;
