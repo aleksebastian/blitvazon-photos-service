@@ -13,19 +13,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "env vars"
+          name: Install project dependencies
+          command: npm ci
+      - run:
+          name: Run tests
           command: |
             echo $cloud_name
             echo $api_key
             echo $api_secret
             echo 'export MODE="dev"'
             echo ${MODE}
-      - run:
-          name: Install project dependencies
-          command: npm ci
-      - run:
-          name: Seed database
-          command: npm run seed
-      - run:
-          name: Run tests
-          command: npm run test
+            npm run test
