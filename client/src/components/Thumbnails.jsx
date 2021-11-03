@@ -43,6 +43,8 @@ const Thumbnails = (props) => (
         src={photo}
         key={i}
         alt="Product photo description goes here"
+        width="40"
+        height="40"
       ></Thumbnail>
     ))}
   </ThumbnailWrapper>
