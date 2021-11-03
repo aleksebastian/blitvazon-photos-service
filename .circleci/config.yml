@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "echo an env var that is part of our context"
+          name: "env vars"
           command: |
             echo $cloud_name
             echo $api_key
