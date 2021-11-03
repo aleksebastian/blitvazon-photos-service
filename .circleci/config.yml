@@ -18,6 +18,8 @@ jobs:
             echo $cloud_name
             echo $api_key
             echo $api_secret
+            echo 'export MODE="dev"'
+            echo ${MODE}
       - run:
           name: Install project dependencies
           command: npm ci

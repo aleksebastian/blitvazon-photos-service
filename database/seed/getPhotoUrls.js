@@ -31,7 +31,10 @@ const getPhotoUrls = (tag) => {
         } else {
           let photosInfo = result.resources;
           urls = photosInfo.map((photoInfo) =>
-            photoInfo.url.replace(currentFileExtension, optimizedFileExtension)
+            photoInfo.secure_url.replace(
+              currentFileExtension,
+              optimizedFileExtension
+            )
           );
           resolve(urls);
         }
