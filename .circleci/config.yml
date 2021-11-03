@@ -21,6 +21,5 @@ jobs:
             echo $cloud_name
             echo $api_key
             echo $api_secret
-            'export MODE="dev"'
-            echo ${MODE}
+            echo $MODE
             npm run test
