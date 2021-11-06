@@ -31,22 +31,29 @@ const notSelectedThumbnailStyle = {
 
 const Thumbnails = (props) => (
   <ThumbnailWrapper>
-    {props.photos.map((photo, i) => (
-      <Thumbnail
-        style={
-          props.primaryPhotoUrl === photo
-            ? selectedThumbnailStyle
-            : notSelectedThumbnailStyle
-        }
-        id={i}
-        onMouseEnter={(e) => props.setPrimary(e)}
-        src={photo}
-        key={i}
-        alt="Product photo description goes here"
-        width="40"
-        height="40"
-      ></Thumbnail>
-    ))}
+    {props.photos.map((photo, i) => {
+      let thumbScale = "h_42,c_scale/";
+      let thumbPhotoUrl = props.primaryPhotoUrl.replace(
+        "upload/",
+        `upload/${thumbScale}`
+      );
+      return (
+        <Thumbnail
+          style={
+            thumbPhotoUrl === photo
+              ? selectedThumbnailStyle
+              : notSelectedThumbnailStyle
+          }
+          id={i}
+          onMouseEnter={(photo) => props.setPrimary(photo)}
+          src={photo}
+          key={i}
+          alt="Product photo description goes here"
+          width="40"
+          height="40"
+        ></Thumbnail>
+      );
+    })}
   </ThumbnailWrapper>
 );
 
