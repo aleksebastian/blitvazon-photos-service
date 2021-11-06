@@ -16,7 +16,7 @@ const fetchWithTimeout = async (resource, options) => {
 const photos = async (productId) => {
   try {
     const response = await fetchWithTimeout(
-      `http://localhost:4002/photos/id/${productId}`,
+      `http://3.142.94.151:4002/photos/id/${productId}`,
       {
         timeout: 3000,
       }
