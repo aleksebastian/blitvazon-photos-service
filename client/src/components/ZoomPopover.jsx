@@ -12,8 +12,7 @@ const ZoomPopoverWrapper = styled.div`
   width: 33em;
   height: 40em;
   @media screen and (min-width: 1400px) {
-    width: 26.5em;
-    height: 34.5em;
+    background-size: 1900px 1900px;
   }
   @media screen and (max-width: 1100px) {
     display: none;
