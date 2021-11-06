@@ -15,12 +15,10 @@ const AppWrapper = styled.div`
 const PhotosWrapper = styled.div`
   display: flex;
   gap: 20px;
-  min-width: 437px;
   @media (max-width: 1100px) {
     flex-direction: column-reverse;
     min-width: unset;
     align-items: center;
-    width: 80vw;
   }
 `;
 
@@ -28,6 +26,7 @@ const PrimaryPhotoWrapper = styled.div``;
 
 const PrimaryPhoto = styled.img`
   max-width: 100%;
+  width: 100%;
   height: auto;
   &:hover {
     cursor: pointer;
@@ -52,10 +51,14 @@ class Photos extends React.Component {
     this.toggleModal = this.toggleModal.bind(this);
   }
 
-  setPrimary(e) {
-    let selectedThumbnail = e.target;
-    let selectedThumbnailPhotoUrl = e.target.src;
-
+  setPrimary(photo) {
+    // let selectedThumbnail = e.target;
+    let selectedThumbnailPhotoUrl = photo.target.src;
+    let thumbScale = "h_42,c_scale/";
+    selectedThumbnailPhotoUrl = selectedThumbnailPhotoUrl.replace(
+      thumbScale,
+      ""
+    );
     this.setState({
       primaryPhotoUrl: selectedThumbnailPhotoUrl,
     });
@@ -98,6 +101,10 @@ class Photos extends React.Component {
       configuration: "loading",
     };
     const productPhotos = await request.photos(productId);
+    let thumbScale = "h_42,c_scale/";
+    productPhotos.productUrls = productPhotos.productUrls.map((url) =>
+      url.replace("upload/", `upload/${thumbScale}`)
+    );
     this.setState({
       productId: productId,
       primaryPhotoUrl: productPhotos.primaryUrl,
@@ -160,6 +167,8 @@ class Photos extends React.Component {
                 onMouseMove={(e) => this.setCoordinates(e)}
                 src={this.state.primaryPhotoUrl}
                 alt="primary photo for short product description goes here"
+                width="1000"
+                height="1000"
               ></PrimaryPhoto>
               {popover}
             </PrimaryPhotoWrapper>
