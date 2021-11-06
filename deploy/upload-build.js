@@ -4,7 +4,7 @@ const path = require("path");
 
 const bundleName = "photos_bundle";
 
-const uploadBuild = async (file, encoding = "") => {
+const uploadBuild = async (file, encoding = "", cacheAge = "300") => {
   await s3.createBucket();
   const buildFile = fs.createReadStream(file);
   buildFile.on("error", (err) => {
@@ -17,15 +17,26 @@ const uploadBuild = async (file, encoding = "") => {
     buildFile,
     "text/javascript",
     encoding,
-    "public-read"
+    "public-read",
+    cacheAge
   );
 };
 
 const run = async () => {
-  await uploadBuild(path.join(__dirname, `../public/${bundleName}.js`));
+  await uploadBuild(
+    path.join(__dirname, `../public/${bundleName}.js`),
+    "",
+    "31536000"
+  );
   await uploadBuild(
     path.join(__dirname, `../public/${bundleName}.js.gz`),
-    "gzip"
+    "gzip",
+    "31536000"
+  );
+  await uploadBuild(
+    path.join(__dirname, `../public/${bundleName}.js.br`),
+    "br",
+    "31536000"
   );
   await uploadBuild(path.join(__dirname, `../public/299.${bundleName}.js`));
   await uploadBuild(path.join(__dirname, `../public/344.${bundleName}.js`));
