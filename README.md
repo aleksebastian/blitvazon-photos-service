@@ -2,18 +2,23 @@
 
 ## Photos service
 
-> Item page photos microservice developed using React and styled-components following SOA principles. Connected via REST API to an express server and persisting data using mongoDB.
+> Amazon-style photos microservice that generates, persists, and displays product data through a REST API.Developed using the MERN stack and styled-components for the front-end styling.
+
+![PageSpeed results](https://raw.githubusercontent.com/aleksebastian/checkout-service/main/pagespeed.svg)
+
+![Site mockup](https://raw.githubusercontent.com/aleksebastian/blitvazon-photos-service/main/mockup.png)
+
+#### [Check out the live microservice running alongside the photos microservice by clicking here](http://ec2-3-142-94-151.us-east-2.compute.amazonaws.com:3000/)
 
 ## Related services
 
-- [Checkout](https://github.com/blitva/checkout-service)
-- [Description](https://github.com/blitva/description-service)
-- [Product features](https://github.com/blitva/product-features-service)
-- [Customer questions](https://github.com/blitva/customer-questions-service)
-- [Comparison](https://github.com/blitva/comparison-service)
-- [Reviews](https://github.com/blitva/reviews-service)
-- [Navbar](https://github.com/blitva/nav-bar)
-- [Footer](https://github.com/blitva/footer)
+- [Checkout](https://github.com/blitva/checkout-service) - Alek O. (Myself)
+- [Description](https://github.com/blitva/description-service) Amos N.
+- [Product features](https://github.com/blitva/product-features-service) - Justin R.
+- [Customer questions](https://github.com/blitva/customer-questions-service) - Justin R.
+- [Reviews](https://github.com/blitva/reviews-service) - Barsha S.
+- [Navbar](https://github.com/blitva/nav-bar) - Justin R.
+- [Footer](https://github.com/blitva/footer) - Alek O. (Myself)
 
 ## Table of Contents
 
@@ -37,15 +42,19 @@ npm install -g webpack
 npm install
 ```
 
+### Additional Dependencies
+
+- MongoDb Community Edition - [Download](https://docs.mongodb.com/manual/administration/install-community/)
+
 ### Setup
 
-Run database seeding scripts (requires mongoDB)
+Run database seeding script to generate 1000 product ids (MongoDb must be running)
 
 ```
 npm run seed
 ```
 
-Build bundle
+Build development bundle
 
 ```
 npm run build:dev
